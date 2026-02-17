@@ -1,0 +1,35 @@
+<div class="product-grid">
+  <div *ngFor="let product of products" class="product-card">
+    
+    <div class="image-container">
+      <img [src]="getProductImage(product)" [alt]="product.name" class="main-img">
+    </div>
+
+    <div class="thumbnail-list">
+      <img [src]="product.image" 
+           (click)="changeImage(product.id, product.image)"
+           [class.selected]="getProductImage(product) === product.image">
+      
+      <img *ngFor="let img of product.images" 
+           [src]="img" 
+           (click)="changeImage(product.id, img)"
+           [class.selected]="getProductImage(product) === img">
+    </div>
+    
+    <h3>{{ product.name }}</h3>
+    <p class="description">{{ product.description }}</p>
+    
+    <div class="info">
+      <span class="price">{{ product.price | number:'1.0-0' }} ₸</span>
+      <span class="rating">⭐ {{ product.rating }}</span>
+    </div>
+
+    <div class="actions">
+      <a [href]="product.link" target="_blank" class="buy-btn">Открыть в Kaspi</a>
+      <div class="share-buttons">
+          <button (click)="share(product, 'wa')" class="wa-btn">WhatsApp</button>
+          <button (click)="share(product, 'tg')" class="tg-btn">Telegram</button>
+      </div>
+    </div>
+  </div>
+</div>
