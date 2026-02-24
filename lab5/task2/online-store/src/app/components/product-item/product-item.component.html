@@ -1,0 +1,35 @@
+<div class="product-card">
+  <div class="image-container">
+    <img [src]="product.image" [alt]="product.name" class="main-img">
+  </div>
+  
+  <div class="thumbnail-list">
+    <img [src]="product.image" (click)="changeImage(product.image)"
+         [class.selected]="true"> @for (img of product.images; track img) {
+      <img [src]="img" (click)="changeImage(img)">
+    }
+  </div>
+  
+  <h3>{{ product.name }}</h3>
+  <p class="description">{{ product.description }}</p>
+  
+  <div class="info">
+    <span class="price">{{ product.price | number:'1.0-0' }} ₸</span>
+    <span class="rating">⭐ {{ product.rating }}</span>
+  </div>
+  
+  <div class="lab5-actions" style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <button (click)="like()" class="like-btn"> <span class = "heart">❤️ </span> {{ product.likes }}</button>
+    <button (click)="onRemove()" class="delete-btn">🗑️ Удалить</button>
+  </div>
+
+  <div class="actions">
+    <a [href]="product.link" target="_blank" class="buy-btn">Открыть в Kaspi</a>
+    <h2 class = "share"> Поделиться </h2>
+    <div class="share-buttons">
+      <button (click)="share('wa')" class="wa-btn"> <img class="wa_icon" src="https://static.vecteezy.com/system/resources/previews/045/602/361/large_2x/whatsapp-icon-logo-transparent-background-free-png.png" alt="WhatsApp" height="45px" width="45px">
+                     </button>
+      <button (click)="share('tg')" class="tg-btn"> <img class="tg_icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/500px-Telegram_2019_Logo.svg.png" alt="Telegram" height="45px" width="45px" ></button>
+    </div>
+  </div>
+</div>

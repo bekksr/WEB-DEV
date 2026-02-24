@@ -1,0 +1,27 @@
+<div class = 'main-layout'> 
+    <header>
+        <h1 class = "apple"> <span class = "apple-store">Apple Store </span> <img src = "https://cdn-icons-png.flaticon.com/512/0/747.png" height="30px">       x        <span class = 'kaspi'> Kaspi</span> <img src = "https://companieslogo.com/img/orig/KKS.F-9d710a31.png?t=1720244492" height = "30px" class = "kaspi-logo"></h1>
+        <nav class = 'category-nav'>
+            <button *ngFor = 'let cat of categories'
+                    (click) = 'selectedCategory(cat.id)'
+                    [class.active] = 'selectedCategoryId === cat.id'>
+            {{cat.name}}
+            </button>
+        </nav>
+    </header>
+
+
+    <main> 
+        <app-product-list *ngIf = "selectedCategoryId"
+                        [categoryId] = "selectedCategoryId">
+        </app-product-list>
+
+        <div *ngIf = '!selectedCategoryId' class = 'welcome-screen'>
+
+
+            <h2> Добро Пожаловать </h2> 
+            <p> Выерите категорию , чтобы начать покупку</p>
+         </div>
+    </main>
+
+</div>
