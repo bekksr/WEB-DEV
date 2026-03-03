@@ -1,0 +1,39 @@
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.photo-card {
+  perspective: 1000px;
+}
+
+.image-wrapper {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: 0.5s;
+}
+
+.photo-card:hover .image-wrapper {
+  transform: rotateY(10deg) rotateX(10deg);
+  box-shadow: -10px 10px 20px rgba(0,0,0,0.2);
+}
+
+.photo-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.photo-card:hover img {
+  transform: scale(1.1);
+}
+
+.photo-title {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: center;
+}

@@ -1,0 +1,23 @@
+<div *ngIf="loading" class="loader">Loading details...</div>
+
+<div class="detail-container" *ngIf="!loading && album">
+  <button class="btn-back" (click)="goBack()">← Back to List</button>
+  
+  <div class="detail-card">
+    <h2>Album Details</h2>
+    <div class="info-row"><strong>ID:</strong> {{ album.id }}</div>
+    <div class="info-row"><strong>User ID:</strong> {{ album.userId }}</div>
+    
+    <div class="edit-section">
+      <label for="title">Album Title:</label>
+      <input id="title" [(ngModel)]="album.title" placeholder="Enter new title...">
+      <button class="btn-save" (click)="saveTitle()">Save Changes</button>
+    </div>
+
+    <hr>
+    
+    <button class="btn-photos" [routerLink]="['/albums', album.id, 'photos']">
+      🖼 View Gallery
+    </button>
+  </div>
+</div>

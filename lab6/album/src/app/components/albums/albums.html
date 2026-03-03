@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="header-section">
+    <div class="header-content">
+      <h2> Explore Collections</h2>
+      <p class="subtitle">Discover and manage your digital photo albums</p>
+    </div>
+    
+    <div *ngIf="loading" class="loader-container">
+      <div class="spinner"></div>
+      <span>Fetching data from API...</span>
+    </div>
+  </div>
+
+  <div class="album-list" *ngIf="!loading">
+    <div *ngFor="let album of albums" class="album-item">
+      
+      <div class="album-content">
+        <div class="album-badge">
+          <span class="album-id">Album #{{ album.id }}</span>
+        </div>
+        <h3 class="album-title">{{ album.title }}</h3>
+      </div>
+
+      <div class="album-actions">
+        <button class="btn-detail" [routerLink]="['/albums', album.id]">
+          <span>View Details</span>
+          <i class="arrow-icon">→</i>
+        </button>
+        <button class="btn-delete" (click)="deleteAlbum(album.id)" title="Delete Album">
+          🗑
+        </button>
+      </div>
+      
+    </div>
+  </div>
+</div>
